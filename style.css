@@ -82,8 +82,6 @@ body {
     margin: 0;
 }
 
-/* ...existing code... */
-
 #task-list li{
     list-style: none;
     padding: 12px 20px;
@@ -248,8 +246,6 @@ body {
     color: #fff;
 }
 
-
-/* düzeltildi: sınıf isimleri yanlış yazılmıştı (priorty- -> priority-) */
 .priority-low {
     color: #4caf50;
     font-weight: bold;
@@ -264,4 +260,5 @@ body {
 .priority-high {
     color: #f44336;
     font-weight: bold;
+
 }
