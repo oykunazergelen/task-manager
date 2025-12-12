@@ -30,7 +30,7 @@ Simple task manager that can list tasks according to the priority and keeps trac
 - or simply visit this site: https://oykunazergelen.github.io/task-manager/
 
 ## 🖼️ Screenshots
-- ![App Screenshot](./img/Ekran görüntüsü 2025-12-12 230851.png)
+- ![App Screenshot](./img/screenshot.png)
 
 ## 🚀 Future Improvements
 - Edit tasks
