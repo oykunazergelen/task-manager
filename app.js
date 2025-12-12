@@ -1,4 +1,3 @@
-// ...existing code...
 const addBtn = document.getElementById('add-btn');
 const taskTitle = document.getElementById('task-title');
 const prioritySelect = document.getElementById('priority');
@@ -9,19 +8,17 @@ addBtn.addEventListener('click', addTask);
 function priorityWeight(p) {
     if (p === 'high') return 3;
     if (p === 'medium') return 2;
-    return 1; // low
-}
+    return 1;
 
 function sortTasks() {
     const items = Array.from(taskList.children);
     items.sort((a, b) => {
         const wa = priorityWeight(a.dataset.priority);
         const wb = priorityWeight(b.dataset.priority);
-        if (wb !== wa) return wb - wa; // büyük ağırlık önce (high üstte)
-        // aynı öncelikse eklenme sırasına göre (küçük timestamp önce)
+        if (wb !== wa) return wb - wa;
         return Number(a.dataset.timestamp) - Number(b.dataset.timestamp);
     });
-    items.forEach(li => taskList.appendChild(li)); // yeniden ekleyerek sıralar
+    items.forEach(li => taskList.appendChild(li));
 }
 
 function addTask() {
@@ -35,7 +32,6 @@ function addTask() {
 
     const li = document.createElement('li');
     li.classList.add("pending", `priority-${priority}`, 'enter');
-    // data attribute'ları sıralama için ekle
     li.dataset.priority = priority;
     li.dataset.timestamp = Date.now();
 
@@ -73,7 +69,6 @@ function addTask() {
         li.classList.add('removing');
         li.addEventListener('transitionend', () => {
             li.remove();
-            // isteğe bağlı: silme sonrası yeniden sırala (genelde gerekmez)
             sortTasks();
         }, { once: true });
     });
@@ -93,9 +88,7 @@ function addTask() {
     });
 
     taskList.appendChild(li);
-    // yeni eklendiğinde sıralamayı uygula
     sortTasks();
 
     taskTitle.value = '';
 }
-// ...existing code...
