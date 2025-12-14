@@ -3,13 +3,32 @@ body {
     background: #111;
     color:#fff;
     margin-top: 50px;
-    text-align: center;
+    text-align: left;
     justify-content: center;
     background-image: url('data:image/svg+xml;utf8,<svg width="15" height="15" xmlns="http://www.w3.org/2000/svg"><rect width="3" height="3" fill="%23181818"/></svg>');
 }
 
+body h1 {
+    text-align: left;
+    margin-bottom: -10px;
+    color: #ffffff;
+    text-shadow: 0 0 10px #5daffc;
+    font-weight: bold;
+    font-size: 4vw;
+}
+
+body h2 {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: #ffffff;
+    text-shadow: 0 0 5px #5daffc;
+    font-weight: normal;
+    font-size: 1vw;
+}
+
 .container {
-    max-width: 400px;
+    max-width: 93vw;
     margin: auto;
     padding: 20px;
     background: #222;
@@ -76,15 +95,18 @@ body {
     transform: translateY(2px);
 }
 
-#task-list {
+#not-started-list,
+#in-progress-list,
+#completed-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* ...existing code... */
 
-#task-list li{
+#not-started-list li,
+#in-progress-list li,
+#completed-list li {
     list-style: none;
     padding: 12px 20px;
     background: #1a1a1a;
@@ -92,7 +114,7 @@ body {
     border-radius: 8px;
     display: grid;
     grid-template-columns: 1fr auto auto;
-    gap: 8px 12px;
+    gap: 1vw 1vw;
     align-items: center;
     transition: transform 300ms ease, opacity 300ms ease, max-height 300ms ease, padding 300ms ease, margin 300ms ease;
     max-width: 500px;
@@ -126,7 +148,6 @@ body {
     flex-direction: column;
     justify-content: center; 
     align-items: flex-start;  
-    padding-right: 8px;
 }
 
 .task-title{
@@ -143,20 +164,20 @@ body {
     
 }
 
-#task-list li.in-progress {
+#in-progress-list li.task-in-progress {
     background-color: #2a2a2a;
 }
 
-#task-list li.completed {
+#completed-list li.task-completed {
     background-color: #3a3a3a;
     text-decoration: line-through;
     color: #888;
 }
 
 .priority {
-    grid-column: 2;
-    margin: 0px;
+    margin: 0;
     font-size: 13px;
+    color: #ccc;
 }
 
 
@@ -225,7 +246,7 @@ body {
     grid-column: 2;
 }
 
-#task-list li:hover {
+#not-started-list li:hover, #in-progress-list li:hover, #completed-list li:hover {
     background: #333;
     transform: translateX(4px);
 }
@@ -248,8 +269,6 @@ body {
     color: #fff;
 }
 
-
-/* düzeltildi: sınıf isimleri yanlış yazılmıştı (priorty- -> priority-) */
 .priority-low {
     color: #4caf50;
     font-weight: bold;
@@ -264,4 +283,124 @@ body {
 .priority-high {
     color: #f44336;
     font-weight: bold;
+}
+
+.chart-legend-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px auto;
+    margin-top: -10vw;
+}
+
+.pie-chart {
+    position: relative;
+    width: 13vw;
+    height: 13vw;
+    min-width: 150px;
+    min-height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(
+      #3333
+    );
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transition: background 0.5s ease;
+    cursor: pointer;
+}
+
+.chart-center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ccc;
+    opacity: 0;
+    pointer-events: none;
+    white-space:pre-line;
+    transition: opacity 0.3s ease;
+    font-size: 1.2vw;
+    text-align: center;
+    pointer-events: none;
+
+}
+.pie-chart:hover .chart-center-text {
+    opacity: 1;
+}
+
+
+.legend {
+    display: flex;
+    flex-direction: column; 
+    gap: 12px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+.status-not-started { background: #00b4d8; }
+.status-in-progress { background: #0077ba; }
+.status-completed   { background: #03045e; }
+
+.categories {
+    flex-direction: row;
+    display: flex;
+    gap: 15vw;
+    align-items: center;
+}
+
+.categories > .not-started, 
+.categories > .in-progress, 
+.categories > .completed {
+
+    border-radius: 8px;
+    width: 20vw;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #not-started-list li,
+    #in-progress-list li,
+    #completed-list li {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 10px;
+        text-align: left;
+    }
+
+    .task-info {
+        grid-column: 1;
+    }
+
+    .status-btn,
+    .delete-btn {
+        grid-column: 1;
+        width: 100%;
+        justify-self: stretch;
+        padding: 10px;
+        font-size: 15px;
+    }
+    .delete-btn {
+        margin-top: 0;
+         background: linear-gradient(180deg, #b31217, #820909);
+    }
+
+    .status-btn {
+        margin-top: 6px;
+    }
+
+    .delete-btn {
+        margin-top: 4px;
+    }
 }
