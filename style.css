@@ -289,7 +289,7 @@ body h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 40px;   /* grafik – legend arası boşluk */
     margin: 40px auto;
     margin-top: -10vw;
 }
@@ -370,6 +370,11 @@ body h2 {
 }
 
 @media (max-width: 768px) {
+    .tasks {
+        flex-direction: column;
+        align-items: stretch;
+
+    }
     #not-started-list li,
     #in-progress-list li,
     #completed-list li {
