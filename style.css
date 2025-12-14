@@ -370,42 +370,51 @@ body h2 {
 }
 
 @media (max-width: 768px) {
-    .tasks {
-        flex-direction: column;
-        align-items: stretch;
+  .chart-legend-container {
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+  }
 
-    }
-    #not-started-list li,
-    #in-progress-list li,
-    #completed-list li {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        gap: 10px;
-        text-align: left;
-    }
+  .pie-chart {
+      width: 160px;
+      height: 160px;
+  }
+  .legend {
+      flex-direction: row;
+      gap: 16px;
+      font-size: 13px;
+  }
+  .task-input {
+      flex-direction: column;
+      align-items: stretch;
+  }
 
-    .task-info {
-        grid-column: 1;
-    }
+  .task-input input,
+  .priority-select,
+  #add-btn {
+      width: 100%;
+  }
 
-    .status-btn,
-    .delete-btn {
-        grid-column: 1;
-        width: 100%;
-        justify-self: stretch;
-        padding: 10px;
-        font-size: 15px;
-    }
-    .delete-btn {
-        margin-top: 0;
-         background: linear-gradient(180deg, #b31217, #820909);
-    }
+  .categories {
+      flex-direction: column;
+      gap: 30px;
+  }
 
-    .status-btn {
-        margin-top: 6px;
-    }
+  .not-started,
+  .in-progress,
+  .completed {
+      width: 100%;
+  }
 
-    .delete-btn {
-        margin-top: 4px;
-    }
+  .categories h3 {
+      font-size: 18px;
+  }
+  .pie-chart {
+      transition: transform 0.3s ease;
+  }
+
+  .pie-chart:active {
+      transform: scale(0.97);
+  }
 }
