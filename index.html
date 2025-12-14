@@ -12,7 +12,29 @@
 <body>
     <div class="container">
         <h1>Task Manager</h1>
-            <div class="task-input" >
+        <h2>Manage your tasks efficiently</h2>
+        <div class="chart-legend-container">
+    <div class="pie-chart">
+        <span class="chart-center-text"></span>    
+    </div>
+
+    <div class="legend">
+        <div class="legend-item">
+            <span class="legend-color status-completed"></span>
+            Completed
+        </div>
+        <div class="legend-item">
+            <span class="legend-color status-in-progress"></span>
+            In Progress
+        </div>
+        <div class="legend-item">
+            <span class="legend-color status-not-started"></span>
+            Not Started
+        </div>
+    </div>
+</div>
+
+            <div class="task-input"> 
             <input type="text" id="task-title" placeholder="Enter a new task">
             <div class="priority-select">
                 <label for="priority">Priority:</label>
@@ -24,8 +46,20 @@
             </div>
             <button id="add-btn">Add To List</button>
         </div>
-        <ul id="task-list"></ul>
+        <div class="categories">
+            <div class="not-started">
+                <h3>Not Started</h3>
+                <ul id="not-started-list"></ul>
+            </div>
+            <div class="in-progress">
+                <h3>In Progress</h3>
+                <ul id="in-progress-list"></ul>
+            </div>
+            <div class="completed">
+                <h3>Completed</h3>
+                <ul id="completed-list"></ul>
+            </div>
      </div>
-    <script src="app.js" defer></script>
+    <script src="app.js?v=2" defer></script>
 </body>
 </html>
